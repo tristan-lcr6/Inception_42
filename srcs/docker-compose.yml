@@ -1,0 +1,36 @@
+## service = list of  containers we want to create
+services:
+  nginx:
+  ## buil show to compose that we are going to build the cointainer from a dockerfile
+    build:
+    ##path to the dockerfile 
+      context: ./requirements/nginx
+      dockerfile: Dockerfile
+      ##name of the container
+    container_name: nginx
+    ## listen to the port 443 (HTTPS PORT) and forward it to the port 443 (HTTPS PORT) of the container
+    ports:
+      - "443:443"
+      ## connect the container to the private network name inception
+    networks:
+      - inception
+      ## if docker stop the container it will restart it automatically
+    restart: always
+
+  mariadb:
+    build:
+      context: .
+      dockerfile: requirements/mariadb/Dockerfile
+    container_name: mariadb
+    networks:
+      - inception
+    env_file:
+      - .env
+    restart: always
+
+## define the private network name inception
+networks:
+  inception:
+  ##create a bridge network (default) that allow the containers to communicate with each other by their name 
+    driver: bridge
+
