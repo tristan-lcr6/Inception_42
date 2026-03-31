@@ -12,9 +12,9 @@ all: build up
 
 build:
 	@echo "$(GREEN)Construction des images...$(COLOR_END)"
+	@docker-compose -f $(DOCKER_COMPOSE_FILE) build
 # 	@mkdir -p $(DATA_PATH)/mariadb
 # 	@mkdir -p $(DATA_PATH)/wordpress
-	@docker-compose -f $(DOCKER_COMPOSE_FILE) build
 
 up:
 	@echo "$(GREEN)Lancement des containers...$(COLOR_END)"
