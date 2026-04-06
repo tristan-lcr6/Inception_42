@@ -1,6 +1,6 @@
 # Variables
 NAME = inception
-DOCKER_COMPOSE_FILE = ./srcs/docker-compose.yml
+DOCKER_COMPOSE_FILE = ./srcs/docker compose.yml
 DATA_PATH = /home/${USER}/srcs/requirements/
 
 # Couleurs pour le terminal

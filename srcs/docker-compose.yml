@@ -19,13 +19,26 @@ services:
 
   mariadb:
     build:
-      context: .
-      dockerfile: requirements/mariadb/Dockerfile
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
     container_name: mariadb
     networks:
       - inception
     env_file:
       - .env
+    restart: always
+
+  wordpress:
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    container_name: wordpress
+    networks:
+      - inception
+    env_file:
+      - .env
+    depends_on:
+      - mariadb
     restart: always
 
 ## define the private network name inception
