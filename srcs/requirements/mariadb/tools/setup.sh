@@ -1,28 +1,34 @@
 #!/bin/bash
 
-#cree le dossier pour le socket de Mariadb
 mkdir -p /var/run/mysqld
-# Donner la propriété à l'utilisateur mysql (créé lors de l'install de mariadb)
 chown -R mysql:mysql /var/run/mysqld
-# Démarrer MySQL en arrière-plan pour l'initialiser
-service mariadb start
-#
-sleep 5
-#
 
-#Quand ton script arrive aux lignes mysql -u root -e "...",
-#l'outil client mysql va chercher le fichier /var/run/mysqld/mysqld.sock
-# pour envoyer tes commandes SQL au serveur qui tourne en arrière-plan.
+# Initialise la base si première fois
+if [ ! -d /var/lib/mysql/mysql ]; then
+    mysql_install_db --user=mysql --datadir=/var/lib/mysql
+fi
 
+# Démarre MariaDB en arrière-plan
+mysqld_safe --skip-networking &
 
-# Sécuriser et créer l'utilisateur/la DB (en utilisant les variables du .env)
-mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`${MARIABD_DATABASE}\`;"
-mysql -u root -e "CREATE USER IF NOT EXISTS \`${MARIABD_USER}\`@'%' IDENTIFIED BY '${MARIABD_PASSWORD}';"
-mysql -u root -e "GRANT ALL PRIVILEGES ON \`${MARIABD_DATABASE}\`.* TO \`${MARIABD_USER}\`@'%';"
+# Attend que MariaDB soit prêt
+echo "Attente démarrage MariaDB..."
+until mysqladmin ping --silent 2>/dev/null; do
+    sleep 1
+done
+echo "MariaDB prêt, création de la base..."
+
+# Crée la base et l'utilisateur
+mysql -u root -e "DELETE FROM mysql.user WHERE User='';"
+mysql -u root -e "CREATE DATABASE IF NOT EXISTS \`${MYSQL_DATABASE}\`;"
+mysql -u root -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}';"
+mysql -u root -e "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';"
 mysql -u root -e "FLUSH PRIVILEGES;"
 
-# Arrêter pour redémarrer proprement avec mysqld_safe (obligatoire pour Docker)
-mysqladmin -u root shutdown
+echo "Base et utilisateur créés !"
 
-# Lancer MariaDB au premier plan et autoriser les connexions de tout le réseau
+# Arrête MariaDB proprement
+mysqladmin shutdown
+
+# Relance au premier plan avec réseau
 exec mysqld_safe --bind-address=0.0.0.0
