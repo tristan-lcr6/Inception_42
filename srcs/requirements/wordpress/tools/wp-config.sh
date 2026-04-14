@@ -8,12 +8,9 @@ if [ ! -f wp-login.php ]; then
 fi
 
 # Attendre que MariaDB soit prêt
-echo "Attente de MariaDB..."
 until mysqladmin ping -h mariadb --silent 2>/dev/null; do
-    echo "MariaDB pas encore prêt, on attend..."
-    sleep 3
+    sleep 1
 done
-echo "MariaDB est prêt !"
 
 # Crée wp-config.php si pas encore fait
 if [ ! -f wp-config.php ]; then
