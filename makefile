@@ -11,17 +11,15 @@ COLOR_END = \033[0m
 all: build up
 
 build:
-	@echo "$(GREEN)Construction des images...$(COLOR_END)"
+	@echo "$(GREEN)BUilding Images$(COLOR_END)"
 	@docker-compose -f $(DOCKER_COMPOSE_FILE) build
-# 	@mkdir -p $(DATA_PATH)/mariadb
-# 	@mkdir -p $(DATA_PATH)/wordpress
 
 up:
-	@echo "$(GREEN)Lancement des containers...$(COLOR_END)"
+	@echo "$(GREEN)Starting containers$(COLOR_END)"
 	@docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
 
 down:
-	@echo "$(RED)Arrêt des containers...$(COLOR_END)"
+	@echo "$(RED)Stopping containers$(COLOR_END)"
 	@docker-compose -f $(DOCKER_COMPOSE_FILE) down
 
 stop:
