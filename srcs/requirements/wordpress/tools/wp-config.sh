@@ -22,6 +22,10 @@ if [ ! -f wp-config.php ]; then
         --allow-root
 fi
 
+wp config set WP_REDIS_HOST redis --allow-root
+wp config set WP_REDIS_PORT 6379 --raw --allow-root 
+wp config set WP_CACHE true  --raw --allow-root
+
 # Installe WordPress si pas déjà installé
 if ! wp core is-installed --allow-root 2>/dev/null; then
     wp core install \
@@ -37,6 +41,10 @@ if ! wp core is-installed --allow-root 2>/dev/null; then
         --user_pass=$WP_USER_PASSWORD \
         --allow-root
 fi
+
+wp plugin install redis-object-cache --activate --allow-root
+wp redis enable --allow-root
+
 
 # Lance PHP-FPM au premier plan
 php-fpm7.4 -F
