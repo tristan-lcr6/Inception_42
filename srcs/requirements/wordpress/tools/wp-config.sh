@@ -2,7 +2,7 @@
 
 cd /var/www/html/wordpress
 
-# Télécharge WordPress en premier
+# download WordPress if login file is absent
 if [ ! -f wp-login.php ]; then
     wp core download --allow-root --locale=fr_FR
 fi

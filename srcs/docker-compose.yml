@@ -57,6 +57,17 @@ networks:
     driver: bridge
 
 volumes:
-  wordpress_data:
   mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/login/data/mariadb 
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/login/data/wordpress 
+  
   
