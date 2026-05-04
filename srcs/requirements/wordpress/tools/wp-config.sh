@@ -42,7 +42,7 @@ if ! wp core is-installed --allow-root 2>/dev/null; then
         --allow-root
 fi
 
-wp plugin install redis-object-cache --activate --allow-root
+wp plugin install redis-cache --activate --allow-root
 wp redis enable --allow-root
 
 wp config set WP_REDIS_HOST redis --allow-root
