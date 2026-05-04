@@ -11,11 +11,11 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 COLOR_END = \033[0m
 
-all:
+all: setup build up
+
+setup:
 	mkdir -p $(MARIADB_FOLDER)
 	mkdir -p $(WORDPRESS_FOLDER)
-	build
-	up
 
 build:
 	@echo "$(GREEN)BUilding Images$(COLOR_END)"
