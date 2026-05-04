@@ -29,7 +29,7 @@ services:
 
   redis:
     build:
-      context: ./requierments/bonus/redis
+      context: ./requirements/bonus/redis
       dockerfile: Dockerfile
     container_name: redis
     networks:
