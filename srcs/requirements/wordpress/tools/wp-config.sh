@@ -48,8 +48,8 @@ wp redis enable --allow-root
 wp config set WP_REDIS_HOST redis --allow-root
 wp config set WP_REDIS_PORT 6379 --allow-root
 # Optionnel mais recommandé pour Inception :
-# wp config set WP_CACHE_KEY_SALT $DOMAIN_NAME --allow-root
-# wp config set WP_CACHE true --raw --allow-root
+wp config set WP_CACHE_KEY_SALT $DOMAIN_NAME --allow-root
+wp config set WP_CACHE true --raw --allow-root
 
 
 # Lance PHP-FPM au premier plan
