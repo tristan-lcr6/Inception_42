@@ -12,21 +12,21 @@ all: build up
 
 build:
 	@echo "$(GREEN)BUilding Images$(COLOR_END)"
-	@docker-compose -f $(DOCKER_COMPOSE_FILE) build
+	@docker compose -f $(DOCKER_COMPOSE_FILE) build
 
 up:
 	@echo "$(GREEN)Starting containers$(COLOR_END)"
-	@docker-compose -f $(DOCKER_COMPOSE_FILE) up -d
+	@docker compose -f $(DOCKER_COMPOSE_FILE) up -d
 
 down:
 	@echo "$(RED)Stopping containers$(COLOR_END)"
-	@docker-compose -f $(DOCKER_COMPOSE_FILE) down
+	@docker compose -f $(DOCKER_COMPOSE_FILE) down
 
 stop:
-	@docker-compose -f $(DOCKER_COMPOSE_FILE) stop
+	@docker compose -f $(DOCKER_COMPOSE_FILE) stop
 
 start:
-	@docker-compose -f $(DOCKER_COMPOSE_FILE) start
+	@docker compose -f $(DOCKER_COMPOSE_FILE) start
 
 clean: down
 	@echo "$(RED)Suppression des images et réseaux...$(COLOR_END)"
