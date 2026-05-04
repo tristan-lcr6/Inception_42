@@ -14,8 +14,8 @@ COLOR_END = \033[0m
 all:
 	mkdir -p $(MARIADB_FOLDER)
 	mkdir -p $(WORDPRESS_FOLDER)
-	build up
-	
+	build
+	up
 
 build:
 	@echo "$(GREEN)BUilding Images$(COLOR_END)"
@@ -41,9 +41,9 @@ clean: down
 
 fclean: clean
 	@echo "$(RED)Suppression totale (volumes inclus)...$(COLOR_END)"
-	@sudo rm -rf $(DATA_PATH)
-	@sudo rm -rf $(WORDPRESS_FOLDER)
-	@sudo rm -rf $(MARIADB_FOLDER)
+	@rm -rf $(DATA_PATH)
+	@rm -rf $(WORDPRESS_FOLDER)
+	@rm -rf $(MARIADB_FOLDER)
 	docker volume rm $$(docker volume ls -q) 2>/dev/null || true
 
 re: fclean all
