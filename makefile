@@ -41,9 +41,9 @@ clean: down
 
 fclean: clean
 	@echo "$(RED)Suppression totale (volumes inclus)...$(COLOR_END)"
-	@rm -rf $(DATA_PATH)
-	@rm -rf $(WORDPRESS_FOLDER)
-	@rm -rf $(MARIADB_FOLDER)
+	@root rm -rf $(DATA_PATH)
+	@root rm -rf $(WORDPRESS_FOLDER)
+	@root rm -rf $(MARIADB_FOLDER)
 	docker volume rm $$(docker volume ls -q) 2>/dev/null || true
 
 re: fclean all
