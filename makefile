@@ -1,14 +1,20 @@
 # Variables
 NAME = inception
 DOCKER_COMPOSE_FILE = ./srcs/docker-compose.yml
-DATA_PATH = /home/${USER}/srcs/requirements/
+DATA_PATH = /home/tlecuyer/srcs/requirements/
+MARIADB_FOLDER = /home/tlecuyer/data/mariadb
+WORDPRESS_FOLDER = /home/tlecuyer/data/wordpress
+
 
 # Couleurs pour le terminal
 GREEN = \033[0;32m
 RED = \033[0;31m
 COLOR_END = \033[0m
 
-all: build up
+all:
+	build up
+	mkdir -p $(MARIADB_FOLDER)
+	mkdir -p $(WORDPRESS_FOLDER)
 
 build:
 	@echo "$(GREEN)BUilding Images$(COLOR_END)"
@@ -34,7 +40,9 @@ clean: down
 
 fclean: clean
 	@echo "$(RED)Suppression totale (volumes inclus)...$(COLOR_END)"
-# 	@sudo rm -rf $(DATA_PATH)
+	@sudo rm -rf $(DATA_PATH)
+	@sudo rm -rf $(WORDPRESS_FOLDER)
+	@sudo rm -rf $(MARIADB_FOLDER)
 	docker volume rm $$(docker volume ls -q) 2>/dev/null || true
 
 re: fclean all
