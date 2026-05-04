@@ -12,30 +12,30 @@ all: build up
 
 build:
 	@echo "$(GREEN)BUilding Images$(COLOR_END)"
-	@docker compose -f $(DOCKER_COMPOSE_FILE) build
+	docker compose -f $(DOCKER_COMPOSE_FILE) build
 
 up:
 	@echo "$(GREEN)Starting containers$(COLOR_END)"
-	@docker compose -f $(DOCKER_COMPOSE_FILE) up -d
+	docker compose -f $(DOCKER_COMPOSE_FILE) up -d
 
 down:
 	@echo "$(RED)Stopping containers$(COLOR_END)"
-	@docker compose -f $(DOCKER_COMPOSE_FILE) down
+	docker compose -f $(DOCKER_COMPOSE_FILE) down
 
 stop:
-	@docker compose -f $(DOCKER_COMPOSE_FILE) stop
+	docker compose -f $(DOCKER_COMPOSE_FILE) stop
 
 start:
-	@docker compose -f $(DOCKER_COMPOSE_FILE) start
+	docker compose -f $(DOCKER_COMPOSE_FILE) start
 
 clean: down
 	@echo "$(RED)Suppression des images et réseaux...$(COLOR_END)"
-	@docker system prune -a -f
+	docker system prune -a -f
 
 fclean: clean
 	@echo "$(RED)Suppression totale (volumes inclus)...$(COLOR_END)"
 # 	@sudo rm -rf $(DATA_PATH)
-	@docker volume rm $$(docker volume ls -q) 2>/dev/null || true
+	docker volume rm $$(docker volume ls -q) 2>/dev/null || true
 
 re: fclean all
 
