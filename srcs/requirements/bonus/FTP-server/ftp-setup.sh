@@ -8,6 +8,7 @@ chown -R $FTP_USER:$FTP_USER /var/www/html/wordpress
 listen=YES
 listen_ipv6=YES
 
+anonymous_enable=NO
 local_enable=YES
 write_enable=YES
 
