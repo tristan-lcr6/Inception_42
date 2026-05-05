@@ -52,16 +52,18 @@ services:
     volumes:
       - wordpress_data:/var/www/html/wordpress
 
-  # adminer:
-  #   build:
-  #     context: ./requirements/bonus/adminer
-  #     dockerfile: Dockerfile
-  #   container_name: adminer
-  #   networks:
-  #     - inception
-  #   ports:
-  #     - 8080:8080
-  #   restart: always
+  adminer:
+    build:
+      context: ./requirements/bonus/adminer
+      dockerfile: Dockerfile
+    container_name: adminer
+    networks:
+      - inception
+    ports:
+      - 8080:8080
+    depends_on: 
+      - mariadb
+    restart: always
 
 
 networks:
