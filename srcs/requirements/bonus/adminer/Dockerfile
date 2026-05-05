@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir -p /var/www/html/adminer \
     && wget -O /var/www/html/adminer/index.php \
-    <https://www.adminer.org/latest.php
+    https://www.adminer.org/latest.php
 
 RUN mkdir -p /run/php
 
