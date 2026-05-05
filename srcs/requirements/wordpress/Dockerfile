@@ -23,7 +23,7 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN mkdir -p /var/www/html/wordpress \
     && chown -R www-data:www-data /var/www/html
  
-COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY conf/www.conf /etc/php/8.2/fpm/pool.d/www.conf
  
 COPY tools/wp-config.sh /usr/local/bin/wp-config.sh
 RUN chmod +x /usr/local/bin/wp-config.sh

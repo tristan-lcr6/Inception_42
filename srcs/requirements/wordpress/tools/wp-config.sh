@@ -53,4 +53,4 @@ wp config set WP_CACHE true --raw --allow-root
 
 
 # Lance PHP-FPM au premier plan
-php-fpm7.4 -F
+php-fpm8.2 -F
