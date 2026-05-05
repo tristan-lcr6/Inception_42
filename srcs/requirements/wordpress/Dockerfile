@@ -1,13 +1,12 @@
 FROM debian:bookworm
  
-
 RUN apt-get update && apt-get install -y \
-    php7.4 \
-    php7.4-fpm \
-    php7.4-mysql \
-    php7.4-curl \
-    php7.4-xml \
-    php7.4-mbstring \
+    php \
+    php-fpm \
+    php-mysql \
+    php-curl \
+    php-xml \
+    php-mbstring \
     wget \
     curl \
     default-mysql-client \
