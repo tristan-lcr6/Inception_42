@@ -68,7 +68,7 @@ services:
 
   ftp-server:
     build:
-      context: ./requirements/srcs/bonus/ftp
+      context: ./requirements/srcs/bonus/FTP-server
       dockerfile: Dockerfile
     container_name: ftp-server
     depends_on: 
