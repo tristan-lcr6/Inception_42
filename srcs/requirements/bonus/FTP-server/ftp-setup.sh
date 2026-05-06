@@ -12,4 +12,4 @@ anonymous_enable=NO
 local_enable=YES
 write_enable=YES
 
-exec vestfpd /etc/vstfpd.conf
+exec vsftpd /etc/vsftpd.conf

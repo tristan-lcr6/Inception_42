@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-RUN apt-get update && apt-get install -y \\
+RUN apt-get update && apt-get install -y \
      vsftpd && rm -rf /var/lib/apt/lists/*
 
 COPY ftp-setup.sh /usr/local/bin/ftp-setup.sh
