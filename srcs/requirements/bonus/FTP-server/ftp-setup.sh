@@ -1,7 +1,8 @@
 #!/bin/bash
 
 useradd -m -d /var/www/html/worpress $FTP_USER
-echo "FTP_USER:$FTP_PASS" | chpasswd
+
+echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
 
 chown -R $FTP_USER:$FTP_USER /var/www/html/worpress
 
