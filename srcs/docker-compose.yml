@@ -8,7 +8,7 @@ services:
       - "443:443"
     networks:
       - inception
-      env_file:
+    env_file:
       - .env
     restart: always
     volumes:
@@ -90,8 +90,6 @@ services:
     env_file:
       - .env
     restart: always
-
-
 
 networks:
   inception:
