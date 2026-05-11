@@ -12,5 +12,6 @@ listen_ipv6=YES
 anonymous_enable=NO
 local_enable=YES
 write_enable=YES
+user_lst_enable=NO
 
 exec vsftpd /etc/vsftpd.conf
