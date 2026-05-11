@@ -1,17 +1,18 @@
 #!/bin/bash
 
 FTP_PASSWORD=$(cat /run/secrets/ftp_password)
+FTP_USER=$(cat /run/secrets/ftp_user)
 
 # Create required directory for vsftpd
 mkdir -p /var/run/vsftpd/empty
 chmod 755 /var/run/vsftpd/empty
 
 # Create FTP user
-useradd -m ftpuser
+useradd -m $FTP_USER
 
-echo "ftpuser:${FTP_PASSWORD}" | chpasswd
+echo "$FTP_USER:${FTP_PASSWORD}" | chpasswd
 
-usermod -aG www-data ftpuser
+usermod -aG www-data $FTP_USER
 
 # Give access to WordPress files
 mkdir -p /var/www/html
