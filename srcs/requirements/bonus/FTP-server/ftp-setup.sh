@@ -1,10 +1,10 @@
 #!/bin/bash
 
-useradd -m -d /var/www/html/worpress $FTP_USER
+useradd -m -d /var/www/html/wordpress $FTP_USER
 
 echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
 
-chown -R $FTP_USER:$FTP_USER /var/www/html/worpress
+chown -R $FTP_USER:$FTP_USER /var/www/html/wordpress
 
 cat > etc/vsftpd.conf << EOF
 listen=YES
