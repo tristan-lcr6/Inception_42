@@ -3,7 +3,7 @@ FROM debian:bookworm
 RUN apt update && apt install -y nginx openssl
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-COPY website/ /var/www/html/
+COPY static.html /var/www/html/static.html
 
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
