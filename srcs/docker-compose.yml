@@ -91,6 +91,20 @@ services:
       - .env
     restart: always
 
+  static:
+    build:
+      context: ./requirements/bonus/static-page
+      dockerfile: Dockerfile
+    container_name: static
+    networks:
+      - inception
+    volumes:
+      - wordpress_data:/var/www/html/wordpress
+    env_file:
+      - .env
+    restart: always
+
+
 networks:
   inception:
     driver: bridge
