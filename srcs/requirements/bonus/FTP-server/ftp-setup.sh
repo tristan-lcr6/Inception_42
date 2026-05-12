@@ -18,4 +18,8 @@ pasv_min_port=21000
 pasv_max_port=21010
 EOF
 
+mkdir -p /var/www/html
+chown -R www-data:www-data /var/www/html
+chmod -R 775 /var/www/html
+
 exec vsftpd /etc/vsftpd.conf
