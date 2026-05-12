@@ -24,8 +24,8 @@ chroot_local_user=YES
 allow_writeable_chroot=YES
 
 pasv_enable=YES
-pasv_min_port=2100
-pasv_max_port=21010
+pasv_min_port=30000
+pasv_max_port=30010
 
 user_sub_token=$USER
 local_root=/var/www/html

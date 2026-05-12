@@ -82,7 +82,7 @@ services:
       - wordpress
     ports:
       - "21:21"
-      - "21000-21010:21000-21010"
+      - "30000-30010:30000-30010"
     volumes:
       - wordpress_data:/var/www/html/wordpress
     networks:
