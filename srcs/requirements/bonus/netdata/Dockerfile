@@ -1,4 +1,4 @@
-FROM debien:bookworm
+FROM debian:bookworm
 
 RUN apt update && apt get -y install netdata
 
