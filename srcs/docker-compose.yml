@@ -90,6 +90,16 @@ services:
     env_file:
       - .env
     restart: always
+  
+
+  tdata:
+    build: ./requirements/bonus/netdata
+    container_name: netdata
+    restart: always
+    networks:
+      - inception
+    expose:
+      - "19999"
 
   static:
     build:
