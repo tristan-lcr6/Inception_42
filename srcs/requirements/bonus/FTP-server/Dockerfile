@@ -11,4 +11,4 @@ RUN chmod +x /usr/local/bin/ftp-setup.sh
 EXPOSE 21
 EXPOSE 21000-21010
 
-ENTRYPOINT ["ftp-setup.sh"]
+CMD ["ftp-setup.sh"]

@@ -31,7 +31,7 @@ RUN chmod +x /usr/local/bin/wp-config.sh
 ##ligne informative car en etant sur le meme reseau tout les dockers ecoute sur tout les ports 
 EXPOSE 9000 
  
-ENTRYPOINT ["wp-config.sh"]
+CMD ["wp-config.sh"]
 
 
 
