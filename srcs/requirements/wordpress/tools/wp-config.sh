@@ -8,7 +8,7 @@ if [ ! -f wp-login.php ]; then
 fi
 
 # Attendre que MariaDB soit prêt
-until mysqladmin ping -h mariadb --silent 2>/dev/null; do
+until mysqladmin ping -h mariadb -P"3306" --silent 2>/dev/null; do
     sleep 1
 done
 
