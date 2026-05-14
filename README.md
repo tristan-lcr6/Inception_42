@@ -1,45 +1,48 @@
 # Inception_42
 
-This project has been created as part of the 42 curriculum by tlecuyer
 
-Le but est de **faire un mini site web** et surtout de **créer ton propre petit Datacenter de ce site**
+This project was created as part of the 42 curriculum by tlecuyer.
 
-1. **Le Docker MariaDB : Il cache tes données et ne parle à personne sauf au bunker WordPress.
-2. **Le Docker WordPress/PHP : Il fabrique les pages web mais reste caché du public.
-3. **Le Docker NGINX : C'est le seul qui a une fenêtre sur l'extérieur. Il vérifie l'identité des visiteurs (SSL/TLS) avant de leur donner accès aux pages.
+The goal is to build a mini-website and, more importantly, to create a **small datacenter to host it**.
 
-> "Inception, c'est apprendre à transformer une machine virtuelle en un serveur web , automatisé et sécurisé.
+### The Infrastructure
+   1. MariaDB Docker: It stores your data and remains isolated, communicating only with the WordPress "bunker."
 
-### Makefile instruction
+   2. WordPress/PHP Docker: It generates the web pages but stays hidden from the public.
 
-- all :
-	- setup
-	- build
-	- up 
+   3. NGINX Docker: This is the only container with a "window" to the outside world. It verifies visitor identities via SSL/TLS before granting access to the site.
+
+> "Inception is about learning how to transform a virtual machine into a professional, automated, and secure web server."
+
+### Makefile Instructions
+
+- all:
+	- Runs setup, build, and up.
 
 - setup:
-	- creat the necessary directories for mariadb and wordpress
+	- Creates the necessary local directories for MariaDB and WordPress volumes.
 
 - build:
-	- build all the docker images using docker-compose
+
+	- Builds all Docker images using docker-compose.
 
 - up:
-	- start running the containers
+    - Starts the containers in the background.
 
 - down:
-	- pause the containers
+    - Stops and removes the containers (pauses the project).
 
 - stop:
-	- stop the containers
+	- Stops the running containers without removing them.
 
 - start:
-	- start the containers
+	- Restarts the stopped containers.
 
 - clean:
-	- down all the containers
+	- Shuts down all containers and performs basic cleanup.
 
-- fclean: clean
-
+- fclean:
+    - Performs a full cleanup (equivalent to clean but usually includes removing volumes and images).
 
 ### Ressources 
 - https://tuto.grademe.fr/inception/
@@ -47,6 +50,8 @@ Le but est de **faire un mini site web** et surtout de **créer ton propre peti
 - https://github.com/vbachele/Inception
 - gemini
 - claude
+
+``` ia has been used during this project mostly for a purpose of understanding , and for configuration files ```
  
 
  ### Explanations 
