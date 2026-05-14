@@ -12,4 +12,4 @@ COPY tools/setup.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/setup.sh
 
 # Lancement du script au démarrage
-ENTRYPOINT ["/usr/local/bin/setup.sh"]
+CMD ["/usr/local/bin/setup.sh"]
